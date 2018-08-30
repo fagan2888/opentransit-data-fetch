@@ -1,0 +1,32 @@
+How have Twin Peaks shuttles affected other routes?
+
+As reported in Mission Local, the operator shortage caused by the twin-peaks shutdown
+has resulted in a silent Muni meltdown - it's not you - there's a service reduction everywhere!
+
+Although one might expect diesel bus routes to be most affected, the shortage isn't of buses,
+but of operators, so all routes are affected. Given the different nature of rail operations,
+we'll only be looking at bus routes (trolley and diesel), excluding the NX.
+
+To visualize the impact, we'll show the average # of scheduled and actual vehicles in service for
+a given route for each weekday and weekend/holiday during the shutdown (June 25 - August 25)
+and right before (April 25 - June 24).
+
+
+
+Implementation
+
+OpenTransit has a data-store containing the real-time vehicle of all Muni vehicles since November 2017.
+This data comes from pinging Nextbus every 15 seconds, where actual vehicle GPS locations are updated
+between 30 and 120 seconds. We plan on using the GPS data stored onboard vehicles once we obtain AVL
+data from Muni.
+
+Our data-store can be accessed via our GraphQL API here - note that there are data gaps between
+February and April. This analysis is from May 25 to July 25 (one normal month + one twin-peaks),
+so there should be no data discrepencies other than the occasional Nextbus downtime.
+
+We first wrote a batch that queried our API and outputted a JSON file containing the time and vehicle_id
+of every start of a trip for each route for each day in the date range. You can access the file here.
+
+
+
+
